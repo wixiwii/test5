@@ -6,7 +6,7 @@ class Pet:
        self.age = 0
    def grow(self):
        self.age += 1
-cat = Pet("Мурзик", "кошка")
+cat = Pet("Kitty", "cat")
 cat.grow()
-print(f"{cat.name} растет и ему уже {cat.age} года")
+print(f"{cat.name} grow up for {cat.age} year")
 
