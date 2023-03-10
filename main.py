@@ -1,11 +1,11 @@
 import random
 
-class Encryptor:
+class En:
     def __init__(self, num):
         self.num = num
-        self.__encrypt()
+        self.__enyt()
 
-    def __encrypt(self):
+    def __enyt(self):
         operation = random.choice(["+", "-", "*", "/"])
         if operation == "+":
             self.num += random.randint(1, 10)
