@@ -1,20 +1,13 @@
-import random
-
-class En:
-    def __init__(self, num):
-        self.num = num
-        self.__enyt()
-
-    def __enyt(self):
-        operation = random.choice(["+", "-", "*", "/"])
-        if operation == "+":
-            self.num += random.randint(1, 10)
-        elif operation == "-":
-            self.num -= random.randint(1, 10)
-        elif operation == "*":
-            self.num *= random.randint(1, 5)
-        elif operation == "/":
-            self.num /= random.randint(1, 5)
-
-    def __str__(self):
-        return str(self.num)
+import turtle
+t = turtle.Turtle()
+t.pensize(10)
+t.forward(100)
+t.left(90)
+t.forward(100)
+t.penup()
+t.color('red', 'yellow')
+t.pendown()
+t.left(90)
+t.forward(100)
+t.left(180)
+t.forward(150)
