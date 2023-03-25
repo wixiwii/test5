@@ -1,11 +1,12 @@
-class Generator:
-    def __iter__(self):
-        return self.generator()
+def my_decorator(func):
+    def wrapper():
+        print("Сейчас что то случится")
+        func()
+        print("Сейчас что то случится")
+    return wrapper
 
-    def generator(self):
-        for i in range(10):
-            yield i
-gen_iter = Generator()
+@my_decorator
+def say_hello():
+    print("привет!")
 
-for i in gen_iter:
-    print(i)
+say_hello()
