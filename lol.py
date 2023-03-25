@@ -1,2 +1,2 @@
-
-
+import colorama
+dir(colorama)
