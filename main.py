@@ -1,8 +1,8 @@
-import sqlite3
-connection=sqlite3.connect("itstep_DB.sl3",5)
-cur = connection.cursor()
+import urllib.request
+import requests
 
-cur.execute("CREATE TABLE first table (name TEXT);")
-connection.commit()
-
-connection.close()
+opener = urllib.request.build_opener()
+response = opener.open("https://httpbin.org/get")
+print(response.read())
+response = requests.get("https://httpbin.org/get")
+print(response.content)
