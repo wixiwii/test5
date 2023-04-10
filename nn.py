@@ -1,28 +1,26 @@
-class Person:
-    def __init__(self, name, age, gender):
-        self.name = name
-        self.age = age
-        self.gender = gender
+import random
 
-    def say_hello(self):
-        print(f"Hello, my name is {self.name}. I am {self.age} years old.")
+class Encoder:
+    def __init__(self, num):
+        self.__num = num
+        self.__encode()
+        
+    def __encode(self):
+        operator = random.choice(['+', '-', '*', '/'])
+        operand = random.randint(1, 10)
+        
+        if operator == '+':
+            self.__num += operand
+        elif operator == '-':
+            self.__num -= operand
+        elif operator == '*':
+            self.__num *= operand
+        else:
+            self.__num //= operand
+        
+    def __str__(self):
+        return str(self.__num)
 
-class Learner:
-    def __init__(self, school, grade):
-        self.school = school
-        self.grade = grade
-
-    def study(self):
-        print("I am studying.")
-
-class Student(Person, Learner):
-    def __init__(self, name, age, gender, school, grade):
-        Person.__init__(self, name, age, gender)
-        Learner.__init__(self, school, grade)
-
-    def say_hello(self):
-        Person.say_hello(self)
-        print(f"I go to {self.school} and I am in grade {self.grade}.")
-
-    def do_homework(self):
-        print("I am doing homework.")
+num = 42
+encoder = Encoder(num)
+print(encoder)
