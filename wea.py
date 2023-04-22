@@ -1,24 +1,24 @@
-import requests
-from bs4 import BeautifulSoup
 import sqlite3
-from datetime import datetime
+import requests
 
-conn = sqlite3.connect('weather.db')
-c = conn.cursor()
-c.execute('''CREATE TABLE IF NOT EXISTS weather
-             (date text, time text, temperature real)''')
+conn = sqlite3.connect('bazadanix.db')
+cursor = conn.cursor()
 
-url = 'https://www.gismeteo.ru/weather-baku-4669/now/'
-response = requests.get(url)
-soup = BeautifulSoup(response.content, 'html.parser')
+cursor.execute('''CREATE TABLE IF NOT EXISTS websites
+                (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                url TEXT)''')
 
-temperature = soup.find('span', class_='js_value tab-weather__value_l').text
+cursor.execute('''INSERT INTO websites(url) VALUES ('https://www.google.com/')''')
 
-now = datetime.now()
-date = now.strftime('%Y-%m-%d')
-time = now.strftime('%H:%M:%S')
+poisk = input("напишите слово для поиска")
 
-c.execute("INSERT INTO weather VALUES (?, ?, ?)", (date, time, temperature))
+cursor.execute("SELECT * FROM websites WHERE url = 'https://www.google.com/'")
+for row in cursor:
+    url = row[1]
+    response = requests.get(url)
+    if poisk in response.text:
+        print(f"мы нашли это слово '{poisk}' в нашей базе {url}")
+else:
+    print("извините такого слова нет в нашей базе")
 
-conn.commit()
 conn.close()
